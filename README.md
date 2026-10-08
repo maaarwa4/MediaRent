@@ -101,7 +101,6 @@ npm run build
 php artisan serve
 ```
 
-> 🔒 Les informations sensibles (clé d'application, accès à la base) sont lues depuis le fichier `.env`, qui n'est jamais versionné.
 
 ---
 

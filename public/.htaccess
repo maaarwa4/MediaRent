@@ -1,0 +1,43 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # ==================================================
+    # Protection .htpasswd (adaptative pour l'hébergement)
+    # ==================================================
+
+    RewriteCond %{REQUEST_URI} ^/admin [NC]
+    RewriteCond %{LA-U:REMOTE_USER} ^$
+    RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
+
+    <IfModule mod_auth_basic.c>
+        <IfModule mod_env.c>
+            # Chemin relatif depuis la racine du projet
+            AuthType Basic
+            AuthName "Admin Area Restricted"
+            AuthUserFile "%{DOCUMENT_ROOT}/../.htpasswd"  # <-- Solution clé
+            Require valid-user
+        </IfModule>
+    </IfModule>
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Handle X-XSRF-Token Header
+    RewriteCond %{HTTP:x-xsrf-token} .
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>

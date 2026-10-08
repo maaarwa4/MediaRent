@@ -1,5 +1,5 @@
 <a href="https://github.com/maaarwa4">
-  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:F97316,50:EC4899,100:9333EA&height=190&section=header&text=MediaRent&fontSize=56&fontColor=ffffff&fontAlignY=36&desc=Professional%20audiovisual%20equipment%20rental%20marketplace&descSize=16&descAlignY=60&animation=fadeIn" alt="MediaRent" />
+  <img width="100%" src="assets/banner.svg" alt="MediaRent" />
 </a>
 
 <div align="center">
@@ -129,5 +129,5 @@ Built by **Marwa Bounoua**
 </div>
 
 <a href="https://github.com/maaarwa4">
-  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:F97316,50:EC4899,100:9333EA&height=100&section=footer" alt="" />
+  <img width="100%" src="assets/footer.svg" alt="" />
 </a>
